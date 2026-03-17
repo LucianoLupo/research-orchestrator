@@ -280,15 +280,10 @@ async function runRound1(topic, angles, outputDir, maxTurns, costs) {
       const cost = res.usage?.costUsd?.toFixed(4) ?? "?";
       logAgent(angle.id, `R1 ${status} (${res.elapsed}min, $${cost}): "${angle.angle}"`);
 
-      if (res.success) {
-        await writeFile(join(agentDir, "log.txt"), res.result, "utf-8");
-      } else {
-        await writeFile(
-          join(agentDir, "log.txt"),
-          `ERROR: ${res.error}`,
-          "utf-8"
-        );
-      }
+      const logContent = res.success
+        ? (res.result ?? "Agent completed but returned no text output")
+        : `ERROR: ${res.error ?? "Unknown error"}`;
+      await writeFile(join(agentDir, "log.txt"), String(logContent), "utf-8");
 
       return { ...res, agentId: angle.id, angle: angle.angle };
     })
@@ -393,7 +388,7 @@ async function runRound2(topic, angles, outputDir, round2Turns, costs) {
       logAgent(angle.id, `R2 ${status} (${res.elapsed}min, $${cost}): "${angle.angle}"`);
 
       if (res.success) {
-        await writeFile(join(agentDir, "log-round2.txt"), res.result, "utf-8");
+        await writeFile(join(agentDir, "log-round2.txt"), String(res.result ?? "Agent completed"), "utf-8");
       }
 
       return { ...res, agentId: angle.id, angle: angle.angle };
