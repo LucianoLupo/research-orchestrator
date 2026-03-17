@@ -1,0 +1,15 @@
+{
+  "name": "research-orchestrator",
+  "version": "1.0.0",
+  "description": "Autoresearch-style orchestrator for parallel deep research with multiple Claude Code instances",
+  "type": "module",
+  "main": "orchestrate.js",
+  "bin": {
+    "research": "./orchestrate.js"
+  },
+  "scripts": {
+    "start": "node orchestrate.js"
+  },
+  "keywords": ["autoresearch", "claude-code", "research", "orchestrator"],
+  "license": "MIT"
+}
