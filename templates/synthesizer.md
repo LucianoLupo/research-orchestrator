@@ -21,6 +21,14 @@ Read ALL of them before writing.
 5. Flag any contradictions between agents' findings
 6. Create a unified sources section (deduplicated)
 
+## CRITICAL: Source Integrity
+
+- **Only include URLs that appear in the agents' findings.** Do NOT add any URLs from your own knowledge.
+- If an agent listed a URL under "Failed Sources", do NOT include it in the final Sources section.
+- If a claim has no URL backing it in any agent's findings, mark it as "[unverified]" in the report.
+- **Never invent, guess, or reconstruct URLs.** If you're unsure about a URL, omit it rather than risk a hallucinated link.
+- The Sources section must be a strict subset of what the agents actually verified.
+
 ## Output
 
 Write the final report to: {{OUTPUT_PATH}}

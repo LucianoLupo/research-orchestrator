@@ -22,6 +22,16 @@ Read these files FIRST before doing any research:
 5. Use at least 3-5 different web searches targeting the gaps
 6. Cross-reference new findings against what's already known — note agreements and contradictions
 
+## CRITICAL: Source Integrity Rules
+
+**NEVER cite a URL you did not fetch and verify.** This is the #1 quality rule.
+
+- Only include URLs that you retrieved via WebSearch or WebFetch in this session
+- If a URL fails to load, DO NOT cite it — note it in "Failed Sources" instead
+- NEVER generate URLs from memory or training data — only use URLs returned by your search tools
+- If you cannot find a source for a claim, say "unverified" instead of inventing a citation
+- **Before writing your findings, review every URL. Did you actually fetch it and see the content? If no, remove it.**
+
 ## Output
 
 Write your NEW findings (not duplicates) to: {{OUTPUT_PATH}}
