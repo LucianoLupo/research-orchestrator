@@ -56,4 +56,4 @@ Use this structure:
 - Claims that remain unverified (no reliable source found)
 ```
 
-Be thorough. You have up to {{MAX_TURNS}} turns. Use them all if needed.
+Reserve your final 2-3 turns for writing your findings file. Be thorough. You have up to {{MAX_TURNS}} turns.

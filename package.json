@@ -1,15 +1,29 @@
 {
   "name": "research-orchestrator",
   "version": "1.0.0",
-  "description": "Autoresearch-style orchestrator for parallel deep research with multiple Claude Code instances",
+  "description": "Parallel deep research with multiple Claude Code instances, shared memory, and iterative refinement",
   "type": "module",
   "main": "orchestrate.js",
   "bin": {
-    "research": "./orchestrate.js"
+    "research-orchestrator": "./orchestrate.js"
   },
   "scripts": {
     "start": "node orchestrate.js"
   },
-  "keywords": ["autoresearch", "claude-code", "research", "orchestrator"],
-  "license": "MIT"
+  "keywords": [
+    "research",
+    "claude-code",
+    "multi-agent",
+    "orchestrator",
+    "deep-research",
+    "ai-agents"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LucianoLupo/research-orchestrator.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
 }

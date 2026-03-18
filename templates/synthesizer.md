@@ -38,7 +38,7 @@ Use this structure:
 ```markdown
 # {{TOPIC}} — Research Report
 
-*Generated {{DATE}} by research-orchestrator ({{NUM_AGENTS}} parallel agents)*
+*Generated {{DATE}} by research-orchestrator ({{NUM_AGENTS}} parallel agents, {{NUM_ROUNDS}} round(s))*
 
 ---
 

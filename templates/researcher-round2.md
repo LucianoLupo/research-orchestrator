@@ -27,12 +27,17 @@ Read these files FIRST before doing any research:
 **NEVER cite a URL you did not fetch and verify.** This is the #1 quality rule.
 
 - Only include URLs that you retrieved via WebSearch or WebFetch in this session
+- After fetching a URL, verify it returned real content (not a 404, 403, or error)
 - If a URL fails to load, DO NOT cite it — note it in "Failed Sources" instead
 - NEVER generate URLs from memory or training data — only use URLs returned by your search tools
 - If you cannot find a source for a claim, say "unverified" instead of inventing a citation
-- **Before writing your findings, review every URL. Did you actually fetch it and see the content? If no, remove it.**
+- Every URL in your New Sources section must have been successfully fetched and confirmed to contain the information you're citing from it
+
+**Before writing your findings, review every URL. Did you actually fetch it and see the content? If no, remove it.**
 
 ## Output
+
+Reserve your final 2-3 turns for writing your findings file.
 
 Write your NEW findings (not duplicates) to: {{OUTPUT_PATH}}
 
@@ -50,8 +55,11 @@ Use this structure:
 ## Gap Resolution
 [Which gaps from gaps.md did you resolve? Which remain?]
 
-## New Sources
+## New Sources (verified — all fetched and confirmed in this session)
 - [Source Title](URL) — brief note on what it contributed
+
+## Failed Sources (URLs that returned errors)
+- [URL] — error type (404, 403, paywall, etc.)
 
 ## Remaining Unknowns
 - What you still couldn't find even after targeted search

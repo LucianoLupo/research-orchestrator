@@ -1,0 +1,20 @@
+{
+  "name": "research-orchestrator",
+  "owner": {
+    "name": "Luciano Lupo"
+  },
+  "metadata": {
+    "description": "Parallel deep research with multiple Claude Code instances"
+  },
+  "plugins": [
+    {
+      "name": "research-orchestrator",
+      "source": ".",
+      "description": "Launch parallel deep research with multiple Claude Code instances, shared memory, and iterative refinement",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": ["research", "deep-research", "multi-agent"],
+      "category": "research"
+    }
+  ]
+}
