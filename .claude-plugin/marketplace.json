@@ -9,7 +9,10 @@
   "plugins": [
     {
       "name": "research-orchestrator",
-      "source": ".",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/LucianoLupo/research-orchestrator.git"
+      },
       "description": "Launch parallel deep research with multiple Claude Code instances, shared memory, and iterative refinement",
       "version": "1.0.0",
       "license": "MIT",
