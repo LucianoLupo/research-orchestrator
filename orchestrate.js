@@ -321,6 +321,9 @@ async function runRound1(topic, angles, outputDir, maxTurns, costs) {
 
         logAgent(angle.id, `R1 starting: "${angle.angle}"`);
 
+        const researchTurns = Math.max(1, Math.floor(maxTurns * 0.7));
+        const writeAt = researchTurns + 1;
+
         const prompt = fillTemplate(template, {
           TOPIC: topic,
           ANGLE_NAME: angle.angle,
@@ -328,6 +331,8 @@ async function runRound1(topic, angles, outputDir, maxTurns, costs) {
           SEARCH_QUERIES: angle.search_queries.join(", "),
           OUTPUT_PATH: outputPath,
           MAX_TURNS: String(maxTurns),
+          RESEARCH_TURNS: String(researchTurns),
+          WRITE_AT: String(writeAt),
         });
 
         const res = await runAgent(`agent-${angle.id}`, prompt, {
@@ -350,6 +355,12 @@ async function runRound1(topic, angles, outputDir, maxTurns, costs) {
           ? (res.result ?? "Agent completed but returned no text output")
           : `ERROR: ${res.error ?? "Unknown error"}`;
         await writeFile(join(agentDir, "log.txt"), String(logContent), "utf-8");
+
+        // Fallback: if findings.md wasn't written but agent produced text, use that
+        if (res.success && !(await fileExists(outputPath)) && res.result && res.result.length > 100) {
+          logAgent(angle.id, "findings.md missing — using agent text output as fallback");
+          await writeFile(outputPath, `# ${angle.angle}\n\n${res.result}`, "utf-8");
+        }
 
         return { ...res, agentId: angle.id, angle: angle.angle };
       } catch (err) {
@@ -434,6 +445,9 @@ async function runRound2(topic, angles, outputDir, round2Turns, costs) {
 
         logAgent(angle.id, `R2 starting: "${angle.angle}"`);
 
+        const r2ResearchTurns = Math.max(1, Math.floor(round2Turns * 0.7));
+        const r2WriteAt = r2ResearchTurns + 1;
+
         const prompt = fillTemplate(template, {
           TOPIC: topic,
           ANGLE_NAME: angle.angle,
@@ -443,6 +457,8 @@ async function runRound2(topic, angles, outputDir, round2Turns, costs) {
           SHARED_GAPS: join(sharedDir, "gaps.md"),
           OUTPUT_PATH: outputPath,
           MAX_TURNS: String(round2Turns),
+          RESEARCH_TURNS: String(r2ResearchTurns),
+          WRITE_AT: String(r2WriteAt),
         });
 
         const res = await runAgent(`agent-${angle.id}-r2`, prompt, {
@@ -459,6 +475,11 @@ async function runRound2(topic, angles, outputDir, round2Turns, costs) {
 
         if (res.success) {
           await writeFile(join(agentDir, "log-round2.txt"), String(res.result ?? "Agent completed"), "utf-8");
+          // Fallback: if findings-round2.md wasn't written but agent produced text, use that
+          if (!(await fileExists(outputPath)) && res.result && res.result.length > 100) {
+            logAgent(angle.id, "findings-round2.md missing — using agent text output as fallback");
+            await writeFile(outputPath, `# ${angle.angle} — Round 2\n\n${res.result}`, "utf-8");
+          }
         }
 
         return { ...res, agentId: angle.id, angle: angle.angle };

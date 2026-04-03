@@ -35,11 +35,25 @@ Read these files FIRST before doing any research:
 
 **Before writing your findings, review every URL. Did you actually fetch it and see the content? If no, remove it.**
 
+## TURN BUDGET — READ THIS FIRST
+
+You have {{MAX_TURNS}} turns total. A turn is ANY tool call (search, fetch, read, write).
+
+**You MUST write your findings file before you run out of turns.** The orchestrator reads ONLY the file — your text output is discarded. If the file does not exist when you finish, your entire research is lost.
+
+**Strategy:**
+- Turns 1–3: Read shared files (known-facts, sources, gaps)
+- Turns 4–{{RESEARCH_TURNS}}: Targeted gap-filling research
+- Turn {{WRITE_AT}}: STOP researching. Write your findings file immediately.
+- Remaining turns: Refine if time allows.
+
+**Hard rule: After {{RESEARCH_TURNS}} turns of research, your VERY NEXT action must be writing {{OUTPUT_PATH}}.** No exceptions.
+
 ## Output
 
-Reserve your final 2-3 turns for writing your findings file.
+**OUTPUT FILE (MANDATORY):** {{OUTPUT_PATH}}
 
-Write your NEW findings (not duplicates) to: {{OUTPUT_PATH}}
+Write your NEW findings (not duplicates) to this file using the Write tool. This file is the ONLY deliverable.
 
 Use this structure:
 
@@ -65,4 +79,6 @@ Use this structure:
 - What you still couldn't find even after targeted search
 ```
 
-You have up to {{MAX_TURNS}} turns. Focus on quality over quantity — one solid new insight beats five restated facts.
+Focus on quality over quantity — one solid new insight beats five restated facts.
+
+After writing the file, output "FINDINGS_WRITTEN" as your final message.
